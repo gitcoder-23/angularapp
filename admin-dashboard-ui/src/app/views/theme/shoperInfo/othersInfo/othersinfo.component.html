@@ -1,0 +1,53 @@
+<span class="pro_para">Other Details</span>
+
+<div class="basic_details shopper_details">
+    <!---For_Edit Button-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-groups">
+                <button type="submit" class="btn btn-sm btn-primary info_edit image_label" name="editbutton"
+                    id="editbutton" (click)="imageShowHide()">
+                    <i class="cui-pencil icons font-2xl mt-4"></i></button>
+
+            </div>
+        </div>
+    </div>
+    <!---For_Edit Button-->
+    <form id="imageInfo" name="imageInfo" [formGroup]="imageInfoForm" (ngSubmit)="imageInfo()">
+
+        <div class="row">
+
+
+
+
+            <div class="form-group col-sm-2 upload_sec">
+                <label for="city">Shop Image<span class="star_class">*</span></label>
+
+                <!----Validation Start-->
+                <input type="file" class="form-control image_edit" id="shop_image" [(ngModel)]="shop_image"
+                    formControlName="shopImage" [ngClass]="{ 'is-invalid': imageSubmitted && imgVal.shopImage.errors }"
+                    (change)="shopPreview(shopfile.files)" #shopfile accept="image/*" />
+
+                <div *ngIf="imageSubmitted && imgVal.shopImage.errors" class="invalid-feedback">
+                    <div *ngIf="imgVal.shopImage.errors.required">
+                        <div class="error_msg"> Image is required</div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="form-group col-sm-3 image_tag">
+                <img class="img-avatar fox url_img" *ngIf="shopImgURL" [src]="shopImgURL" width="100" height="100" />
+            </div>
+
+        </div>
+
+        <!-----------Buttons start-->
+
+        <button class="btn btn-sm btn-primary button_edit image_edit" type="submit" (click)="imageSave()">
+            <i class="fa fa-dot-circle-o"></i>&nbsp;Save
+        </button>
+        <!-----------Buttons end-->
+    </form>
+</div>

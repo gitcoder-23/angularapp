@@ -1,0 +1,64 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card-group">
+            <div class="card p-4">
+              <div class="card-body">
+                <form id="otpInfo" name="otpInfo" [formGroup]="otpInfo" (ngSubmit)="otpInfo.valid && onSubmit()">
+                  <h1>OTP</h1>
+                  <p class="text-muted">Type your OTP here</p>
+                  <div class="input-group mb-3" >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-phone"></i></span>
+                    </div>
+                    
+                    
+
+                      <!--------------Validation Start-->
+
+                      <input type="text"  placeholder="OTP*" class="form-control" id="otp"  [(ngModel)]="otp"
+                      formControlName="otp" appProtectedfield
+                      [ngClass]="{'is-invalid': otpInfo.get('otp').touched && otpInfo.get('otp').invalid}" />
+                      <div *ngIf= "otpInfo.get('otp').touched && otpInfo.get('otp').invalid" class="invalid-feedback">
+                      <div *ngIf="otpInfo.get('otp').errors.required"  class="error_msg">OTP is required</div>
+                      <div *ngIf="otpInfo.get('otp').errors.pattern" class="error_msg">Type valid OTP</div>
+                    </div>
+
+
+
+                      <!--------------Validation End-->
+
+                  </div>
+                  
+                  <div class="row next_button">
+                    <div class="col-6">
+                      <button type="button" class="btn btn-primary px-4" [disabled] = "!otpInfo.valid">Submit</button>
+                    </div>
+                   
+                  </div>
+                </form>
+              </div>
+            </div>
+
+
+            <!--------------------Right Blue Colour Sign Up Start-->
+            <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+              <div class="card-body text-center">
+                <div>
+                  <h2>Sign up</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <button type="button" routerLink="/register" class="btn btn-primary active mt-3">Register Now!</button>
+                </div>
+              </div>
+            </div>
+
+<!--------------------Right Blue Colour Sign Up End-->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

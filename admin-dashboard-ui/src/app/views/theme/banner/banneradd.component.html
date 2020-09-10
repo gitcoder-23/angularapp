@@ -1,0 +1,130 @@
+<div class="banner_images upper_space">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-header">
+        <strong>Banner Add</strong>
+      </div>
+      <form id="bannerImage" name="bannerImage"  [formGroup]="bannerImageForm" (ngSubmit)="bannerSubmit()">
+        <div class="card-body">
+            <div class="form-group field_inn">
+              <label class="form-col-form-label" for="inputSuccess1">Display Image Here</label>
+              <div class="display_image">
+
+                <img *ngFor="let url of urls" [src]="url" width="100" height="100"  />
+
+              </div>
+            
+
+            </div>
+            <div class="form-group field_inn1">
+              <label class="form-col-form-label" for="inputError1">Upload Image Here<span class="star_class">*</span></label>
+
+              
+                 <!----Validation Start-->
+                 <input type="file" class="form-control" id="banner_image" [(ngModel)]="banner_image"
+                 formControlName="bannerImg"
+                 [ngClass]="{ 'is-invalid': submitted && bannerval.bannerImg.errors }"
+                 (change)="onSelectFile($event)" multiple accept="image/*" />
+
+                 <div *ngIf="submitted && bannerval.bannerImg.errors" class="invalid-feedback">
+                  <div *ngIf="bannerval.bannerImg.errors.required">
+                    <div class="error_msg"> Banner image is required</div>
+                  </div>
+                  </div>
+                <!----Validation End-->
+
+                 
+
+
+            </div>
+          </div>
+
+
+
+            <div class="card-footer buttons ">
+              <!--button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button-->
+          <button type="submit" class="btn btn-sm btn-primary " >
+            <i class="fa fa-dot-circle-o"></i> Add
+          </button>
+          
+          </div>
+
+          
+        
+      </form>
+    </div>
+  </div><!--/.col-->
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-header">
+        <strong>Banner List </strong> 
+      </div>
+      <div class="card-body">
+
+        <div class="scrolling_div">
+          
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Sl.No</th>
+              <th>Banner Image</th>
+              <th>Banner Name</th>
+              
+              <th colspan=2>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><img alt="admin@bootstrapmaster.com" class="img-avatar" src="assets/img/avatars/6.jpg"></td>
+              <td>head.jpg</td>
+              
+              
+              <td>
+                <!--a href="" onclick="return confirm ('Do you want to edit ??')" class="badge badge-primary"><i class="cui-pencil icons font-2xl mt-4"></i></a--> &nbsp; 
+                <a href="" onclick="return confirm ('Are you sure ??')" class="badge badge-danger"><i class="cui-trash icons font-2xl mt-4"></i></a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>2</td>
+              <td><img alt="admin@bootstrapmaster.com" class="img-avatar" src="assets/img/avatars/6.jpg"></td>
+              <td>head.jpg</td>
+              
+              
+              <td>
+                <!--a href="" onclick="return confirm ('Do you want to edit ??')" class="badge badge-primary"><i class="cui-pencil icons font-2xl mt-4"></i></a--> &nbsp; 
+                <a href="" onclick="return confirm ('Are you sure ??')" class="badge badge-danger"><i class="cui-trash icons font-2xl mt-4"></i></a>
+              </td>
+            </tr>
+          
+           
+           
+           
+           
+          </tbody>
+        </table>
+  
+      </div> <!------scrolling_div----->
+  
+  
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+          <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </div>
+    </div>
+  </div><!--/.col-->
+
+  
+</div></div>
+
+
+

@@ -1,0 +1,165 @@
+<div class="animated fadeIn upper_space">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Reset Password</strong>
+
+        </div>
+
+
+        <div class="card-body">
+          
+          <!--------3nd Div Start-->
+          <form [formGroup]="resetPassForm" (ngSubmit)="resetPass();">
+            <div class="basic_details admin_reset_pass">
+        
+              <div class="row">
+                <div class="col-md-6 mx-auto">
+                  
+                    
+                      <div class="form-group">
+                        <label>Old Password<span class="star_class">*</span></label>
+                        <div class="input-group mb-3">
+                          <input [type]="oldTextType ? 'text' : 'password'" class="form-control" id="old_pass"
+                            name="old_pass" formControlName="oldPass"  placeholder="Enter old password"
+                            [(ngModel)]="first_name" appProtectedfield maxlength="10" minlength="10"
+                            [ngClass]="{ 'is-invalid': isPasswordSubmitte && passVal.oldPass.errors }" />
+        
+                          <!---------------Password Show Hide-->
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="fa" [ngClass]="{
+                            'fa-eye-slash': !oldTextType,
+                            'fa-eye': oldTextType }" (click)="toggleOldTextType()"></i>
+                            </span>
+                          </div>
+                          <!---------------Password Show Hide end-->
+        
+                          <div *ngIf="isPasswordSubmitte && passVal.oldPass.errors" class="invalid-feedback">
+                            <div *ngIf="passVal.oldPass.errors.required" >
+                              <div class="error_msg">Old password is required</div>
+                            </div>
+                            <div *ngIf="passVal.oldPass.errors.pattern" >
+                              <div class="error_msg">  First is upper case</div>
+                            </div>
+                            <div *ngIf="passVal.oldPass.errors.pattern" >
+                              <div class="error_msg"> Next is number & character(1, 2, @)</div>
+                                <div class="error_msg">  (eg. Local2@code)</div>
+                            </div>
+                          </div>
+        
+                        </div>
+        
+                      </div>
+        
+        
+        
+                      <div class="form-group">
+                        <label>New Password<span class="star_class">*</span></label>
+        
+                        <!----Validation Start-->
+                        <div class="input-group mb-3">
+                          <input [type]="newTextType ? 'text' : 'password'" class="form-control" id="new_pass"
+                            name="new_pass" formControlName="newPass" placeholder="Enter new password"
+                            [(ngModel)]="new_pass" appProtectedfield maxlength="10" minlength="10"
+                            [ngClass]="{ 'is-invalid': isPasswordSubmitte && passVal.newPass.errors }" />
+                            
+                          <!---------------Password Show Hide-->
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="fa" [ngClass]="{
+                            'fa-eye-slash': !newTextType,
+                            'fa-eye': newTextType }" (click)="toggleNewTextType()"></i>
+                            </span>
+                          </div>
+                          <!---------------Password Show Hide end-->
+        
+                          <div *ngIf="isPasswordSubmitte && passVal.newPass.errors" class="invalid-feedback">
+                            <div *ngIf="passVal.newPass.errors.required" >
+                              <div class="error_msg">New password is required</div>
+                            </div>
+                            <div *ngIf="passVal.newPass.errors.pattern" >
+                              <div class="error_msg">  First is upper case</div>
+                            </div>
+                            <div *ngIf="passVal.newPass.errors.pattern" >
+                              <div class="error_msg"> Next is number & character(1, 2, @)</div>
+                                <div class="error_msg">  (eg. Local2@code)</div>
+                            </div>
+                          </div>
+                        </div>
+                        <!----Validation End-->
+        
+                      </div>
+        
+                      <div class="form-group">
+                        <label>Confirm Password<span class="star_class">*</span> </label>
+        
+                        <!----Validation Start-->
+                        <div class="input-group mb-3">
+                          <input [type]="confirmTextType ? 'text' : 'password'" class="form-control" id="confirm_pass"
+                            name="confirm_pass" formControlName="confirmPass" placeholder="Enter confirm password"
+                            maxlength="10" minlength="10"
+                            [(ngModel)]="confirm_pass" appConfirmEqualValidatorDirective="newPass" appProtectedfield
+                            [ngClass]="{ 'is-invalid': isPasswordSubmitte && passVal.confirmPass.errors }" />
+        
+                          <!---------------Password Show Hide-->
+                          <div class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="fa" [ngClass]="{
+                            'fa-eye-slash': !confirmTextType,
+                            'fa-eye': confirmTextType
+                          }" (click)="toggleConfirmTextType()"></i>
+                            </span>
+                          </div>
+                          <!---------------Password Show Hide end-->
+        
+                          <div *ngIf="isPasswordSubmitte && passVal.confirmPass.errors" class="invalid-feedback">
+                            <div *ngIf="passVal.confirmPass.errors.required" >
+                              <div class="error_msg">Confirm password is required</div>
+                            </div>
+                            <div *ngIf="passVal.confirmPass.errors.pattern" >
+                              <div class="error_msg">Password pattern must be same</div>
+                            </div>
+                            <div *ngIf="passVal.confirmPass.errors.notEqual" >
+                              <div class="error_msg">New & Confirm Password does not match</div>
+                            </div>
+        
+                          </div>
+                        </div>
+                        <!----Validation End-->
+                      </div>
+        
+                      <div class="row button_row">
+                        <div class="card-footer1 buttons">
+                          <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i>
+                            Submit</button>
+                        </div>
+                      </div>
+                  
+                </div>
+        
+        
+        
+        
+              </div>
+        
+        
+        
+              
+        
+            </div>
+          </form>
+          <!------Basic Details Div3 End-->
+
+
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

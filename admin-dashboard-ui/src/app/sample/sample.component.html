@@ -1,0 +1,13 @@
+<!--button (click)="openConfirmationDialog()" (confirm)="confirmClicked = true" type="button" class="btn btn-primary">Open dialog</button-->
+<button
+      class="btn btn-primary"
+      mwlConfirmationPopover
+      [popoverTitle]="popoverTitle"
+      [popoverMessage]="popoverMessage"
+      placement="left"
+      (confirm)="removeListElement(i)"
+      (cancel)="cancelClicked = true"
+    >
+      Click me!
+    </button>
+<p>Open the console to see log statements.</p>

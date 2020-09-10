@@ -1,0 +1,150 @@
+<!--ngx-loading-bar [height]="'20px'"></ngx-loading-bar-->
+
+
+<app-header
+  [navbarBrandRouterLink]="['/dashboard']"
+  [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/logo2.png', width: 89, height: 25, alt: 'Local2Vocals Logo'}"
+  [navbarBrandMinimized]="{src: 'assets/fav.png', width: 30, height: 30, alt: 'Local2Vocals Logo'}"
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'">
+  <!--ul class="nav navbar-nav d-md-down-none">
+    <li class="nav-item px-3">
+      <a class="nav-link" href="#">Dashboard</a>
+    </li>
+    <li class="nav-item px-3">
+      <a class="nav-link" href="#">Users</a>
+    </li>
+    <li class="nav-item px-3">
+      <a class="nav-link" href="#">Settings</a>
+    </li>
+  </ul-->
+  <ngx-spinner></ngx-spinner>
+  <!---Notification PopUp Code Start---->
+  <div class="modal fade modal-box" id="notifyModal" tabindex="-1" role="dialog" aria-labelledby="notifyModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="notifyModalLabel">Notifications</h5>
+          <!--button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button-->
+        </div>
+        <div class="modal-body">
+          <div class="all_notification">
+          <p class="notifypara">Services like AWS and Azure is providing notification frameworks. If you use any of those then you may not need to worry about the table structures. All you need is to trigger the notification from different point of your application.</p>
+          <p class="notifypara">For example when a user likes something from another user, then your application can trigger a send event (can be sent to thousands of users with a single API call). The API will store and forward the record to the destination user or users.
+            </p>
+          <p class="notifypara">The implementation depends on the design, where it will go in future and the environment you will implement in. You might choose a twitter-esque implementation, a SAN-backed system of XML, Relational Databases, Hadoop and tons of others.</p>
+          <p class="notifypara">Paradoxically, it’s rather challenging to come up with a real world example of an observer pattern that doesn’t involve computing, because nearly every technological service or device we use on a daily basis implements an observer pattern in one way or another. App notifications on your phone or email alerts from your favorite shopping site are just two of the extremely common observer pattern scenarios many of us frequently experience.</p>
+          <p class="notifypara">One slightly less technical real world example of the observer pattern is when you sign up for a magazine subscription, such as WIRED (one of my personal favorites). While computers are obviously handling all the logic behind-the-scenes, the observer pattern is still being used in this case. You (an observer) have subscribed to a magazine provider. When the provider publishes a new issue (the data), you receive it in the mail a few days later. Critically, this is not a one-to-one relationship, in which the provider is sending the notification (magazine) only to you. Instead, they’re able to send it to thousands of people all at once, just as most digital services do when you sign-up for their email newsletter.</p>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!---Notification PopUp Code End---->
+  <!---Notification PopUp Code Start---->
+  <div class="modal fade modal-box" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="locationModalLabel">Location</h5>
+          <!--button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button-->
+        </div>
+        <div class="modal-body">
+          <div class="all_notification">
+          <p class="locationpara">Howard Administration Building
+            2800 University Blvd N
+            Jacksonville, FL 32211</p>
+            <p class="locationmap"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.92357853116!2d-81.60780438487761!3d30.35312173177107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x253b9cdf84de4cff!2sHoward%20Administration%20Building!5e0!3m2!1sen!2sin!4v1596558383156!5m2!1sen!2sin" width="450" height="150" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></p>
+          
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!---Notification PopUp Code End---->
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link" href="#" data-toggle="modal" data-target="#notifyModal"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+    </li>
+    <!--li class="nav-item d-md-down-none">
+      <a class="nav-link" href="#"><i class="icon-list"></i></a>
+    </li-->
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link" href="#" data-toggle="modal" data-target="#locationModal"><i class="icon-location-pin"></i></a>
+    </li>
+
+    
+
+
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" 
+      role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+
+        <img title="Raja" src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"/>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <!--a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span class="badge badge-info">42</span></a-->
+        <!--a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Messages<span class="badge badge-success">42</span></a-->
+        <a class="dropdown-item" routerLink="/theme/myinfo"><i class="fa fa-user"></i> Profile</a> 
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#notifyModal"><i class="icon-bell"></i> Notification</a> 
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#locationModal"><i class="icon-location-pin"></i> Location</a>  
+        <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> Selling History<span class="badge badge-danger">42</span></a>
+        <!--a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Comment<span class="badge badge-warning">42</span></a-->
+        <!--div class="dropdown-header text-center"><strong>Settings</strong></div-->
+        
+        <!--a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a-->
+        <!--a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="badge badge-dark">42</span></a>
+        <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a-->
+        <div class="divider"></div>
+        <!--a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock account</a-->
+        <a class="dropdown-item" href="#" (click)='logout()'><i class="fa fa-lock"></i> Logout</a>
+      </div >
+    </li>
+  </ul>
+</app-header>
+<div class="app-body">
+  <app-sidebar #appSidebar [fixed]="true" [display]="'lg'" [minimized]="sidebarMinimized" (minimizedChange)="toggleMinimize($event)">
+    <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="appSidebar.minimized"></app-sidebar-nav>
+    <app-sidebar-minimizer></app-sidebar-minimizer>
+  </app-sidebar>
+ 
+  <main class="main">
+    
+    
+    <cui-breadcrumb>
+      
+      <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <!-- a class="btn" href="#"><i class="icon-speech"></i></a>
+          <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
+          <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a-->
+        </div>
+      </li>
+    </cui-breadcrumb>
+    
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+  
+</div>
+<app-footer>
+  <span><a href="#">All Right reserved</a> &copy; 2020 Local2Vocals.</span>
+  <span class="ml-auto">Powered by <a href="#">Local2Vocals</a></span>
+</app-footer>

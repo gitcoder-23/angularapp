@@ -1,0 +1,216 @@
+<div class="animated fadeIn upper_space">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Settings Information</strong>
+
+        </div>
+
+
+        <div class="card-body">
+
+          <!--------2nd Div Start-->
+          <form [formGroup]="socialInfoForm" (ngSubmit)="socialInfo();">
+            <div class="basic_details">
+
+              <div class="row">
+                <div class="col-sm-3 col-md-offset-1">
+                  <div class="form-group">
+                    <label>Address<span class="star_class">*</span></label>
+                    <input class="form-control" type="text" id="address" name="address"
+                      formControlName="address" placeholder="Enter address" [(ngModel)]="address"
+                      [ngClass]="{ 'is-invalid': submitted && socialVal.address.errors }" />
+
+                    <div *ngIf="submitted && socialVal.address.errors" class="invalid-feedback">
+                      <div *ngIf="socialVal.address.errors.required">
+                        <div class="error_msg"> Address is required</div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label >Support Email<span class="star_class">*</span></label>
+
+                    <!----Validation Start-->
+                    <input class="form-control" type="text" id="email" name="email" formControlName="email"
+                      placeholder="Enter support email" [(ngModel)]="email"
+                      [ngClass]="{ 'is-invalid': submitted && socialVal.email.errors }" />
+
+                    <div *ngIf="submitted && socialVal.email.errors" class="invalid-feedback">
+                      <div *ngIf="socialVal.email.errors.required">
+                        <div class="error_msg"> Email is required</div>
+                      </div>
+                      <div *ngIf="socialVal.email.errors.pattern" >
+                        <div class="error_msg">Type valid email</div>
+                      </div>
+
+                    </div>
+
+                    <!----Validation End-->
+                  </div>
+                </div>
+
+
+
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label >Primary Phone<span class="star_class">*</span> </label>
+
+                    <!----Validation Start-->
+                    <input class="form-control" type="text" id="supportPhone" name="supportPhone" formControlName="supportPhone"
+                      placeholder="Enter phone" [(ngModel)]="supportPhone" maxlength="10" minlength="10"
+                      (keypress)="numberOnly($event)"
+                      [ngClass]="{ 'is-invalid': submitted && socialVal.supportPhone.errors }" />
+
+                    <div *ngIf="submitted && socialVal.supportPhone.errors" class="invalid-feedback">
+                      <div *ngIf="socialVal.supportPhone.errors.required">
+                        <div class="error_msg">phone is required</div>
+                      </div>
+                      <div *ngIf="socialVal.supportPhone.errors.pattern">
+                        <div class="error_msg">Type valid phone number</div>
+                      </div>
+
+                    </div>
+
+                    <!----Validation End-->
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label >Alternative Phone</label>
+
+                    <!----Validation Start-->
+                    <input class="form-control" type="text" id="altPhone" name="altPhone"
+                     formControlName="altPhone"
+                      placeholder="Enter phone" [(ngModel)]="altPhone" maxlength="10" minlength="10"
+                      (keypress)="numberOnly($event)"
+                      [ngClass]="{ 'is-invalid': submitted && socialVal.altPhone.errors }" />
+
+                    <div *ngIf="submitted && socialVal.altPhone.errors" class="invalid-feedback">
+                      <!--div *ngIf="socialVal.altPhone.errors.required">
+                        <div class="error_msg">phone is required</div>
+                      </div-->
+                      <div *ngIf="socialVal.altPhone.errors.pattern">
+                        <div class="error_msg">Type valid phone number</div>
+                      </div>
+
+                    </div>
+
+                    <!----Validation End-->
+                  </div>
+                </div>
+
+
+
+              </div>
+
+              <div class="row">
+                <div class="col-sm-3 col-md-offset-1">
+                  <div class="form-group">
+                    <label >Facebook </label>
+
+                    <!----Validation Start-->
+                    <input class="form-control" type="text" id="facebookUrl" name="facebookUrl" formControlName="facebookUrl"
+                      placeholder="Enter facebook url" [(ngModel)]="facebook_url" 
+                      
+                      [ngClass]="{ 'is-invalid': submitted && socialVal.facebookUrl.errors }" />
+
+                    <div *ngIf="submitted && socialVal.facebookUrl.errors" class="invalid-feedback">
+                      <!--div *ngIf="socialVal.facebookUrl.errors.required">
+                        <div class="error_msg">Facebook is required</div>
+                      </div-->
+
+                    </div>
+
+                    <!----Validation End-->
+                  </div>
+                </div>
+
+                <div class="col-sm-3 ">
+                  <div class="form-group">
+                    <label >Twitter </label>
+
+                    <!----Validation Start-->
+                    <input class="form-control" type="text" id="twitterUrl" name="twitterUrl" formControlName="twitterUrl"
+                      placeholder="Enter twitter url" [(ngModel)]="twitterUrl" 
+                      
+                      [ngClass]="{ 'is-invalid': submitted && socialVal.twitterUrl.errors }" />
+
+                    <div *ngIf="submitted && socialVal.twitterUrl.errors" class="invalid-feedback">
+                      <!--div *ngIf="socialVal.twitterUrl.errors.required">
+                        <div class="error_msg">Twitter is required</div>
+                      </div-->
+
+                    </div>
+
+                    <!----Validation End-->
+                  </div>
+                </div>
+
+               
+
+                <div class="col-sm-3 ">
+                  <div class="form-group">
+                    <label >Youtube </label>
+
+                    <!----Validation Start-->
+                    <input class="form-control" type="text" id="youtubeUrl" name="youtubeUrl" formControlName="youtubeUrl"
+                      placeholder="Enter youtube url" [(ngModel)]="youtubeUrl" 
+                      
+                      [ngClass]="{ 'is-invalid': submitted && socialVal.youtubeUrl.errors }" />
+
+                    <div *ngIf="submitted && socialVal.youtubeUrl.errors" class="invalid-feedback">
+                      <!--div *ngIf="socialVal.youtubeUrl.errors.required">
+                        <div class="error_msg">Youtube is required</div>
+                      </div-->
+
+                    </div>
+
+                    <!----Validation End-->
+                  </div>
+                </div>
+
+                <div class="col-sm-3 ">
+                  <div class="form-group">
+                    <label >Instagram</label>
+
+                    
+                    <input class="form-control" type="text" id="instagramUrl" name="instagramUrl" 
+                      placeholder="Enter instagram url" formControlName="instagramUrl" [(ngModel)]="instagramUrl"  />
+
+                   
+                  </div>
+                </div>
+
+
+              </div>
+
+
+
+              <div class="row button_row">
+                <div class="card-footer1 buttons">
+                  <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i>
+                    Submit</button>
+                </div>
+              </div>
+
+            </div>
+          </form>
+          <!------Basic Details Div2 End-->
+
+
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

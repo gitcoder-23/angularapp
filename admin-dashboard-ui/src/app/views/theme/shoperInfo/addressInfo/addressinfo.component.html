@@ -1,0 +1,136 @@
+<span class="pro_para">Shop Address Details</span>
+<div class="basic_details shopper_details">
+    <!---For_Edit Button-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-groups">
+                <button type="submit" class="btn btn-sm btn-primary info_edit address_pencil" name="editbutton"
+                    id="editbutton" (click)="addressShowHide()">
+                    <i class="cui-pencil icons font-2xl mt-4"></i></button>
+
+            </div>
+        </div>
+    </div>
+    <!---For_Edit Button-->
+    <form [formGroup]="addressInfoForm" (ngSubmit)="addressInfo();">
+
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="company">Shop Name<span class="star_class">*</span></label>
+                <!----Validation Start-->
+                <input type="text" placeholder="Enter shop name" class="form-control address_input" id="shop_name"
+                    formControlName="shopName" name="shop_name" [(ngModel)]="shop_name"
+                    [ngClass]="{ 'is-invalid': addressSubmitted && addressVal.shopName.errors }" />
+
+
+                <div *ngIf="addressSubmitted && addressVal.shopName.errors" class="invalid-feedback">
+                    <div *ngIf="addressVal.shopName.errors.required">
+                        <div class="error_msg"> Shop Name is required</div>
+                    </div>
+                </div>
+                <!----Validation End-->
+
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="street">Street Name<span class="star_class">*</span></label>
+
+
+                <input type="text" placeholder="Enter street name" class="form-control address_input" id="street"
+                    [(ngModel)]="street" formControlName="streetName"
+                    [ngClass]="{'is-invalid' : addressSubmitted && addressVal.streetName.errors}" />
+                <div *ngIf="addressSubmitted && addressVal.streetName.errors" class="invalid-feedback">
+                    <div *ngIf="addressVal.streetName.errors.required">
+                        <div class="error_msg"> Street Name is required</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group col-sm-4">
+                <label for="country">Country<span class="star_class">*</span></label>
+
+                <select name="country" id="country" (change)="changeCountryVal($event)" formControlName="countryName"
+                    class="form-control address_input" ng-model="country"
+                    [ngClass]="{ 'is-invalid': addressSubmitted && addressVal.countryName.errors }">
+                    <option value="">---Please select---</option>
+                    <option *ngFor="let country of countries" [ngValue]="country.c_id">{{country.country}}</option>
+                </select>
+                <div *ngIf="addressSubmitted && addressVal.countryName.errors" class="invalid-feedback">
+                    <div *ngIf="addressVal.countryName.errors.required">
+                        <div class="error_msg">Choose your country </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="form-group col-sm-4">
+                <label for="State">State<span class="star_class">*</span></label>
+
+
+                <select name="state" id="state" ng-model="state" class="form-control address_input"
+                    (change)="changeState($event)" formControlName="stateName"
+                    [ngClass]="{ 'is-invalid': addressSubmitted && addressVal.stateName.errors }">
+                    <option value="">---Please select---</option>
+                    <option *ngFor="let state of states" [ngValue]="state.s_id">{{state.state}}</option>
+                </select>
+
+
+                <div *ngIf="addressSubmitted && addressVal.stateName.errors" class="invalid-feedback">
+                    <div *ngIf="addressVal.stateName.errors.required">
+                        <div class="error_msg"> State is required</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-group col-sm-4">
+                <label for="street">City<span class="star_class">*</span></label>
+
+
+                <input type="text" placeholder="Enter city name" class="form-control address_input" id="city"
+                    [(ngModel)]="city" formControlName="cityName"
+                    [ngClass]="{ 'is-invalid': addressSubmitted && addressVal.cityName.errors }" />
+
+                <div *ngIf="addressSubmitted && addressVal.cityName.errors" class="invalid-feedback">
+                    <div *ngIf="addressVal.cityName.errors.required">
+                        <div class="error_msg"> City is required</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="city">Postal/ Pin/ Zip<span class="star_class">*</span></label>
+
+                    <input type="text" name="zip" placeholder="Enter zip code" class="form-control address_input"
+                        [(ngModel)]="zip" formControlName="zipCode"
+                        [ngClass]="{ 'is-invalid': addressSubmitted && addressVal.zipCode.errors }" />
+
+                    <div *ngIf="addressSubmitted && addressVal.zipCode.errors" class="invalid-feedback">
+                        <div *ngIf="addressVal.zipCode.errors.required">
+                            <div class="error_msg"> Pin code is required</div>
+                        </div>
+                        <div *ngIf="addressVal.zipCode.errors.pattern">
+                            <div class="error_msg">Type valid pin code</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-----------Buttons start-->
+
+        <button class="btn btn-sm btn-primary button_edit address_btn" type="submit">
+            <i class="fa fa-dot-circle-o"></i>&nbsp;Save
+        </button>
+        <!-----------Buttons end-->
+    </form>
+</div>

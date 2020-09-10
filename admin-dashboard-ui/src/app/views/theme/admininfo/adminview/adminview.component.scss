@@ -1,0 +1,51 @@
+.row.view_form .col-sm-3 {
+    border-right: 1px solid #000;
+}
+
+.row.view_form .col-sm-3:last-child {
+    border: none !important;
+}
+
+.row.view_form input {
+    border: none;
+    font-size: 20px;
+    background: no-repeat;
+    text-align: center;
+    color: #a71710 !important;
+    font-weight: 500;
+}
+
+.row.view_form .form-group {
+    text-align: center;
+}
+
+.row.view_form label {
+    letter-spacing: 1px;
+}
+
+.basic_details.admin-view label {
+    color: #00000085;
+}
+
+@media (max-width: 760px){
+    
+    .row.view_form .col-sm-3 {
+        border-right: none !important;
+        border-bottom: 1px solid #000 !important;
+        margin-top: 16px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

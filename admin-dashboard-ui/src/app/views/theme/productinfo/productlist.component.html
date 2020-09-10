@@ -1,0 +1,108 @@
+
+<div class="animated fadeIn upper_space">
+
+<div class="col-lg-12">
+  <div class="card">
+    <div class="card-header">
+    
+      <div class="row align-items-center">
+        <div class="col-md-3">
+          <i class="fa fa-align-justify"></i> Product List
+        </div>
+        <div class="col-md-6 mb-3 mb-xl-0 input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="icon-magnifier"></i></span>
+          </div>
+          
+           <input class="form-control" name="valuetosearch" id="myInput" placeholder="Search.." type="text">
+        </div>
+        
+        <div class="col-md-3">
+          <button class="btn btn-block btn-success" routerLink="/theme/product" type="button">Add Product</button>
+        </div>
+      </div>
+
+    </div>
+
+     <!--Progress Bar----->
+     <div class="spinner" *ngIf="spinnerFunction(loading)">
+
+      <ngx-spinner ></ngx-spinner>
+    </div>
+      
+      <!--Progress Bar End----->
+    <!-----Product Information List-->
+    <div class="card-body">
+    
+      <div class="scrolling_div">
+
+      <table class="table table-bordered" *ngIf="!spinnerFunction(loading)">
+        <thead>
+          <tr>
+            <th>Sl.No</th>
+            <th>Product Code </th>
+            <th>Product Name</th>
+            <th>Brand Name</th>
+            <th>Price</th>
+            <th colspan=2>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let product of (productData$ | async);index as i'>
+          <!--tr *ngFor='let product of prodata;index as i'-->
+            <td>{{i+1}}</td>
+            <td>{{product.productCode}}</td>
+            <td>{{product.productName}}</td>
+            <td>{{product.brandName}}</td>
+            <td>{{product.price}}{{" "}}{{product.unit}}</td>
+            <td>
+              <button 
+             
+              mwlConfirmationPopover
+              [popoverTitle]="updateTitle"
+              [popoverMessage]="updateMessage"
+              placement="top"
+              (confirm)="confirmUpdated(product.id)"
+              (cancel)="cancelUpdated = true"
+              class="badge badge-primary"><i class="cui-pencil icons font-2xl mt-4"></i></button> &nbsp; 
+
+              <button 
+              class="badge badge-danger" 
+              mwlConfirmationPopover
+              [popoverTitle]="popoverTitle"
+              [popoverMessage]="popoverMessage"
+              placement="top"
+              (confirm)="confirmDeletePro(product.id)"
+              (cancel)="cancelDeleted = true"
+              
+             
+              ><i class="cui-trash icons font-2xl mt-4"></i></button>
+              <!------always use 'id' for State management Using NGRX (click)="deleteProduct(product.id)",  (click)="editProduct(product.id)" 
+----->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> <!------scrolling_div-- --->
+
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+        <li class="page-item active">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </div>
+
+    <!-----Product Information List End-->
+
+    <hr/>
+<!-----Product Quantity List-->
+    
+    <!-----Product Quantity List End-->
+  </div>
+</div>
+</div>

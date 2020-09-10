@@ -1,0 +1,87 @@
+
+<div class="animated fadeIn upper_space">
+
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+        
+          <div class="row align-items-center">
+            <div class="col-md-3">
+              <i class="fa fa-align-justify"></i> Quantity List
+            </div>
+            <div class="col-md-6 mb-3 mb-xl-0 input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="icon-magnifier"></i></span>
+              </div>
+              
+               <input class="form-control" name="valuetosearch" id="myInput" placeholder="Search.." type="text">
+            </div>
+            
+            <div class="col-md-3">
+              <button class="btn btn-block btn-success" routerLink="/theme/quantity" type="button">Add Quantity</button>
+            </div>
+          </div>
+    
+        </div>
+    
+       
+        <!-----Product Information List-->
+        <div class="card-body">
+        
+          <div class="scrolling_div">
+    
+          <table class="table table-bordered" >
+            <thead>
+              <tr>
+                <th>Sl.No</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th colspan=2>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor= 'let quantity of (quantityData$ | async); index as i'>
+              <!--tr *ngFor='let product of prodata;index as i'-->
+              <!--td>{{quantity.id}}</td-->
+              <td>{{i+1}}</td>
+              
+            <td>{{quantity.productName}}</td>
+            <td>{{quantity.quantity}}</td>
+            <td>{{quantity.price}}{{" "}}{{quantity.unit}}</td>
+                <td>
+                  <button 
+                  (click)="quantityUpdate(quantity.id)"
+                  
+                  class="badge badge-primary"><i class="cui-pencil icons font-2xl mt-4"></i></button> &nbsp; 
+    
+                 
+                  <!------always use 'id' for State management Using NGRX  ----->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!------scrolling_div-- --->
+    
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </div>
+    
+        <!-----Product Information List End-->
+    
+        <hr/>
+    <!-----Product Quantity List-->
+        
+        <!-----Product Quantity List End-->
+      </div>
+    </div>
+    </div>
+    

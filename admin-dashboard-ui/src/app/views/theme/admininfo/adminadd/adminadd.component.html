@@ -1,0 +1,188 @@
+
+  
+           
+            <!--------2nd Div Start-->
+            <form [formGroup]="addAdminForm" (ngSubmit)="addAdmin();">
+              <div class="basic_details">
+  
+                <div class="row">
+                  <div class="col-sm-3 col-md-offset-1">
+                    <div class="form-group">
+                      <label>First Name<span class="star_class">*</span></label>
+                      <input class="form-control" type="text" id="first_name" name="first_name"
+                        formControlName="firstName" placeholder="Enter first name" [(ngModel)]="first_name"
+                        [ngClass]="{ 'is-invalid': submitted && adminVal.firstName.errors }" />
+  
+                      <div *ngIf="submitted && adminVal.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="adminVal.firstName.errors.required">
+                          <div class="error_msg"> First name is required</div>
+                        </div>
+  
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label >Last Name<span class="star_class">*</span></label>
+  
+                      <!----Validation Start-->
+                      <input class="form-control" type="text" id="last_name" name="last_name" formControlName="lastName"
+                        placeholder="Enter last name" [(ngModel)]="last_name"
+                        [ngClass]="{ 'is-invalid': submitted && adminVal.lastName.errors }" />
+  
+                      <div *ngIf="submitted && adminVal.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="adminVal.lastName.errors.required">
+                          <div class="error_msg"> Last name is required</div>
+                        </div>
+  
+                      </div>
+  
+                      <!----Validation End-->
+                    </div>
+                  </div>
+  
+  
+  
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label for="company">Phone Number<span class="star_class">*</span> </label>
+  
+                      <!----Validation Start-->
+                      <input class="form-control" type="text" id="phone" name="phone" formControlName="phoneNumber"
+                        placeholder="Enter phone" [(ngModel)]="phone" maxlength="10" minlength="10"
+                        (keypress)="numberOnly($event)"
+                        [ngClass]="{ 'is-invalid': submitted && adminVal.phoneNumber.errors }" />
+  
+                      <div *ngIf="submitted && adminVal.phoneNumber.errors" class="invalid-feedback">
+                        <div *ngIf="adminVal.phoneNumber.errors.required">
+                          <div class="error_msg">Phone is required</div>
+                        </div>
+  
+                      </div>
+  
+                      <!----Validation End-->
+                    </div>
+                  </div>
+  
+                  <div class="col-sm-3">
+  
+                    <div class="form-group">
+                      <label for="name">Gender<span class="star_class">*</span></label>
+                      <select class="form-control" (change)="changeGender($event)" ng-Model="gender" name="gender"
+                        formControlName="genderName"
+                        [ngClass]="{ 'is-invalid': submitted && adminVal.genderName.errors }">
+                        <option value="">--Choose Gender--</option>
+                        <option *ngFor="let gender of genders" [ngValue]="gender">{{gender}}</option>
+  
+                      </select>
+  
+                      <div *ngIf="submitted && adminVal.genderName.errors" class="invalid-feedback">
+                        <div *ngIf="adminVal.genderName.errors.required">
+                          <div class="error_msg">Choose gender</div>
+                        </div>
+                      </div>
+  
+  
+                    </div>
+  
+                  </div>
+  
+  
+  
+                </div>
+  
+                <div class="row">
+                  <div class="col-sm-3 col-md-offset-1">
+                    <div class="form-group">
+                      <label>Password<span class="star_class">*</span></label>
+                      <div class="input-group mb-3 field_size_apple">
+  
+                        <input [type]="addTextType ? 'text' : 'password'" class="form-control" id="add_password" name="add_password"
+                        formControlName="addPassword" placeholder="Enter password" [(ngModel)]="add_password" appProtectedfield
+                        maxlength="10" minlength="10"
+                        [ngClass]="{ 'is-invalid': submitted && adminVal.addPassword.errors }" />
+                         <!---------------Password Show Hide-->
+                         <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="fa" [ngClass]="{
+                          'fa-eye-slash': !addTextType,
+                          'fa-eye': addTextType }" (click)="toggleAddTextType()"></i>
+                          </span>
+                        </div>
+                        <!---------------Password Show Hide end-->
+  
+                       <div *ngIf="submitted && adminVal.addPassword.errors" class="invalid-feedback">
+                        <div *ngIf="adminVal.addPassword.errors.required" >
+                          <div class="error_msg">Password is required</div>
+                        </div>
+                        <div *ngIf="adminVal.addPassword.errors.pattern" >
+                          <div class="error_msg">  First is upper case</div>
+                        </div>
+                        <div *ngIf="adminVal.addPassword.errors.pattern" >
+                          <div class="error_msg"> Next is number & character(1, 2, @)</div>
+                            <div class="error_msg">  (eg. Local2@code)</div>
+                        </div>
+                      </div>
+  
+                      </div>
+                      
+                      
+                    </div>
+                  </div>
+  
+                  <div class="col-sm-3 col-md-offset-1">
+                    <div class="form-group">
+                      <label>Confirm Password<span class="star_class">*</span></label>
+                      <div class="input-group mb-3 field_size_apple">
+  
+                        <input [type]="confTextType ? 'text' : 'password'" class="form-control" id="conf_password" name="conf_password"
+                        formControlName="confPassword" placeholder="Enter confirm password"  appProtectedfield
+                        maxlength="10" minlength="10"
+                        [(ngModel)]="conf_password" appConfirmEqualValidatorDirective="addPassword"
+                        [ngClass]="{ 'is-invalid': submitted && adminVal.confPassword.errors }" />
+                         <!---------------Password Show Hide-->
+                         <div class="input-group-append">
+                          <span class="input-group-text">
+                            <i class="fa" [ngClass]="{
+                          'fa-eye-slash': !confTextType,
+                          'fa-eye': confTextType }" (click)="toggleConfTextType()"></i>
+                          </span>
+                        </div>
+                        <!---------------Password Show Hide end-->
+  
+                       <div *ngIf="submitted && adminVal.confPassword.errors" class="invalid-feedback">
+                        <div *ngIf="adminVal.confPassword.errors.required" >
+                          <div class="error_msg">Confirm password is required</div>
+                        </div>
+                        <div *ngIf="adminVal.confPassword.errors.pattern" >
+                          <div class="error_msg"> Confirm Password pattern must be same</div>
+                        </div>
+                        <div *ngIf="adminVal.confPassword.errors.notEqual" >
+                          <div class="error_msg"> Add & Confirm Password does not match</div>
+                        </div>
+                      </div>
+  
+                      </div>
+                      
+                      
+                    </div>
+                  </div>
+  
+  
+                </div>
+  
+  
+  
+                <div class="row button_row">
+                  <div class="card-footer1 buttons">
+                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i>
+                      Submit</button>
+                  </div>
+                </div>
+  
+              </div>
+            </form>
+            <!------Basic Details Div2 End-->
+  
+  

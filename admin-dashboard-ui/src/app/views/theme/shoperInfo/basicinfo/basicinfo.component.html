@@ -1,0 +1,148 @@
+<span class="pro_para">Basic Information</span>
+
+<div class="basic_details shopper_details">
+    <!---For_Edit Button-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="form-groups">
+                <button type="submit" class="btn btn-sm btn-primary info_edit basic_pencil" name="editbutton"
+                    id="editbutton" (click)="basicShowHide()">
+                    <i class="cui-pencil icons font-2xl mt-4"></i></button>
+
+            </div>
+        </div>
+    </div>
+    <!---For_Edit Button-->
+    <form id="basicInfo" name="basicInfo" [formGroup]="basicInfoForm" (ngSubmit)="basicInfo()">
+
+
+
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>First Name<span class="star_class">*</span></label>
+
+                    <!----Validation Start-->
+
+                    <input class="form-control basic_input" type="text" placeholder="Enter first name" id="f_name"
+                        formControlName="firstName" [(ngModel)]="f_name"
+                        [ngClass]="{ 'is-invalid': submitted && basicVal.firstName.errors }" />
+
+
+                    <div *ngIf="submitted && basicVal.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="basicVal.firstName.errors.required">
+                            <div class="error_msg"> First Name is required</div>
+                        </div>
+
+                    </div>
+
+                    <!----Validation End-->
+
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Middle Name(Optional)</label>
+
+                    <input type="text" class="form-control basic_input" [(ngModel)]="m_name" name="m_name" id="m_name"
+                        formControlName="middleName" placeholder="Enter middle name">
+
+                    <!----Validation Start-->
+
+
+                    <!----Validation End-->
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="name">Last Name<span class="star_class">*</span></label>
+
+                    <input type="text" placeholder="Enter last name" class="form-control basic_input" id="l_name"
+                        formControlName="lastName" [(ngModel)]="l_name"
+                        [ngClass]="{ 'is-invalid': submitted && basicVal.lastName.errors }" />
+
+
+                    <div *ngIf="submitted && basicVal.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="basicVal.lastName.errors.required">
+                            <div class="error_msg"> Last Name is required</div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="gender">Gender<span class="star_class">*</span></label>
+
+
+
+                    <select id="gender" class="form-control basic_input" id="gender" ng-Model="gender"
+                        (change)="changeGender($event)" formControlName="genderName"
+                        [ngClass]="{ 'is-invalid': submitted && basicVal.genderName.errors }">
+                        <option value=""> ---Select Gender---</option>
+                        <option [ngValue]="gender" *ngFor="let gender of genders"> {{gender}}</option>
+                    </select>
+                    <div *ngIf="submitted && basicVal.genderName.errors" class="invalid-feedback">
+                        <div *ngIf="basicVal.genderName.errors.required">
+                            <div class="error_msg"> Gender is required</div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="ccnumber">Email(Optional)</label>
+
+                    <input type="text" placeholder="Enter valid email" class="form-control basic_input" id="email"
+                        [(ngModel)]="email" formControlName="Email"
+                        [ngClass]="{'is-invalid': submitted && basicVal.Email.errors}" />
+                    <div *ngIf="submitted && basicVal.Email.errors" class="invalid-feedback">
+
+                        <div *ngIf="basicVal.Email.errors.pattern">
+                            <div class="error_msg"> Type valid email</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="ccnumber">Phone Number<span class="star_class">*</span></label>
+
+
+
+                    <input type="text" placeholder="Enter phone number" class="form-control basic_input" id="phone"
+                        [(ngModel)]="phone" formControlName="phoneNumber" minlength="10" maxLength="10"
+                        [ngClass]="{'is-invalid': submitted && basicVal.phoneNumber.errors}" />
+                    <div *ngIf="submitted && basicVal.phoneNumber.errors" class="invalid-feedback">
+                        <div *ngIf="basicVal.phoneNumber.errors.required">
+                            <div class="error_msg"> Phone is required</div>
+                        </div>
+                        <div *ngIf="basicVal.phoneNumber.errors.pattern">
+                            <div class="error_msg"> Type valid Phone number</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!------Basic Details Div-->
+        <!-----------Buttons start-->
+
+        <button class="btn btn-sm btn-primary button_edit basic_btn" type="submit">
+            <i class="fa fa-dot-circle-o"></i>&nbsp;Save
+        </button>
+        <!-----------Buttons end-->
+
+    </form>
+</div>
+<!----------First_Section Body End-->

@@ -1,0 +1,175 @@
+<div class="main-container container">
+    <ul class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home"></i></a></li>
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Register</a></li>
+    </ul>
+    
+    <div class="row full_content">
+        <div id="content" class="col-sm-12">
+            <h2 class="title">Register Account</h2>
+            <p>If you already have an account with us, please login at the <a class="login_link" routerLink="/login">login page</a>.</p>
+
+            <form name="accountInfo" id="accountInfo" (ngSubmit)="accountInfo.valid && onSubmit()" class="form-horizontal account-register clearfix">
+               
+          
+                    <div class="form-group required" [formGroup]="accountInfo">
+                        <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
+                        <div class="col-sm-10 name_field" >
+
+
+                <!----Validation Start-->
+                      <input type="text" placeholder="Enter first name" class="form-control" 
+                      id="f_name" name="f_name" 
+                      formControlName="firstName" [(ngModel)]="f_name"/>
+
+                      <div *ngIf="accountInfo.get('firstName').errors && accountInfo.get('firstName').touched">
+                      <span class="error_class" *ngIf="accountInfo.get('firstName').errors['required']">First name required</span>
+                    </div>
+                 <!----Validation End-->
+
+                        </div>
+                    </div>
+                
+                
+                    <div class="form-group ">
+                        <label class="col-sm-2 control-label" for="input-firstname">Middle Name(Optional)</label>
+                        <div class="col-sm-10 name_field">
+                            <input type="text" name="middle_name" value="" placeholder="Middle Name" id="input-firstname" class="form-control">
+                        </div>
+                    </div>
+              
+              
+                    <div class="form-group required" [formGroup]="accountInfo">
+                        <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+                        <div class="col-sm-10 name_field">
+                            
+                                <!----Validation Start-->
+                                <input type="text" placeholder="Enter last name" class="form-control" 
+                                id="l_name" name="l_name" 
+                                formControlName="lastName" [(ngModel)]="l_name"/>
+
+                                <div *ngIf="accountInfo.get('lastName').errors && accountInfo.get('lastName').touched">
+                                <span class="error_class" *ngIf="accountInfo.get('lastName').errors['required']">Last name required</span>
+                                </div>
+                                 <!----Validation End-->
+                        </div>
+                    </div>
+                    
+                            <div class="form-group required" [formGroup]="accountInfo">
+                                <label class="col-sm-2 control-label" for="input-telephone">Phone</label>
+                                <div class="col-sm-10 name_field"> 
+                                    <input type="text" placeholder="Enter phone number" class="form-control" 
+                                    id="phone" name="phone" formControlName="phoneNumber" [(ngModel)]="phone" required uniquePhone>
+                                <div *ngIf="accountInfo.get('phoneNumber').errors && accountInfo.get('phoneNumber').touched">
+                                <!-- <div class="text-danger" *ngIf="phone.invalid && (phone.dirty || phone.touched)"> -->
+                                <div style="color: red;" *ngIf="accountInfo.get('phoneNumber').errors['required']">phone number is required</div>
+                                <div style="color: red;" *ngIf ="accountInfo.get('phoneNumber').errors['uniquePhone']">phone number already exit in server</div>
+                            </div>
+                        </div>
+                        </div>
+                            
+               
+                    
+                   
+                    <!-- <div class="form-group required" [formGroup]="accountInfo">
+                        <label class="col-sm-2 control-label" for="input-telephone">Phone</label>
+                        <div class="col-sm-10 name_field"> -->
+                            
+                            <!----Validation Start-->
+                            <!-- <input type="text" placeholder="Enter phone number" class="form-control" 
+                            id="phone" name="phone" formControlName="phoneNumber" [(ngModel)]="phone"  />
+
+                            <div *ngIf="accountInfo.get('phoneNumber').errors && accountInfo.get('phoneNumber').touched">
+                            <span class="error_class" *ngIf="accountInfo.get('phoneNumber').errors['required']">Phone number required</span>
+                            <span class="error_class" *ngIf="accountInfo.get('phoneNumber').errors.pattern">Type valid phone number 10 charector</span>
+                                
+                        </div> -->
+                             <!----Validation End-->
+
+                        <!-- </div>
+                    </div> -->
+                    
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-fax">Gender</label>
+                        <div class="col-sm-10 name_field">
+                            <select name="gender" class="form-control" [(ngModel)]="gender">
+                                <option [ngValue]="null" disabled>--- Select Gender ---</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                
+                
+
+                    <div class="form-group required" [formGroup]="accountInfo">
+                        <label class="col-sm-2 control-label" for="input-password">Password</label>
+                        <div class="col-sm-10">
+                           
+                                    <!--------------Validation Start-->
+
+                            <input type="password" placeholder="Password*" autocomplete="current-password" class="form-control" id="password"  [(ngModel)]="password"
+                            formControlName="password"
+                            [ngClass]="{'is-invalid': accountInfo.get('password').touched && accountInfo.get('password').invalid}" />
+                            <div *ngIf= "accountInfo.get('password').touched && accountInfo.get('password').invalid" class="invalid-feedback">
+
+                                <div style="color: red;" *ngIf="accountInfo.get('password').errors.required"  class="error_msg">Password is required at least 11 characters</div>
+                                <div style="color: red;" *ngIf="accountInfo.get('password').errors.pattern" class="error_msg">First letter should capital</div>
+                                <div style="color: red;" *ngIf="accountInfo.get('password').errors.pattern" class="error_msg">Next is number & character(1, 2, @ )</div>
+                                <div style="color: red;" *ngIf="accountInfo.get('password').errors.pattern" class="error_msg">Last is letter(eg. Local2@code)</div>
+
+                            </div>
+                                <!--------------Validation End-->
+                        </div>
+                    </div>
+                    <div class="form-group required" [formGroup]="accountInfo">
+                        <label class="col-sm-2 control-label" for="input-confirm">Password Confirm</label>
+                        <div class="col-sm-10">
+                        <!--------------Validation Start-->
+
+                        <input type="password" placeholder="Confirm password*" autocomplete="current-password" class="form-control" id="confirm_Password"
+                        name="confirmPassword" appConfirmEqualValidatorDirective="password" [(ngModel)]="confirm_Password"
+                        formControlName="confirmPassword"
+                        [ngClass]="{'is-invalid': accountInfo.get('confirmPassword').touched && accountInfo.get('confirmPassword').invalid}" />
+                        <div style="color: red;" *ngIf= "accountInfo.get('confirmPassword').touched && accountInfo.get('confirmPassword').invalid" >
+
+                        <div style="color: red;" *ngIf="accountInfo.get('confirmPassword').errors.required"  class="error_msg">Confirm Password is required </div>
+                        <div style="color: red;" *ngIf="accountInfo.get('confirmPassword').errors.pattern" class="error_msg">Password & Confirm password Should be same</div>
+                        <div style="color: red;" *ngIf="accountInfo.get('confirmPassword').errors.notEqual" class="error_msg">Password & Confirm Password does not match</div>
+                        </div>
+
+
+
+                        <!--------------Validation End-->                      
+                      </div>
+                    </div>
+               
+                
+                
+                <!--fieldset>
+                    <legend>Newsletter</legend>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Subscribe</label>
+                        <div class="col-sm-10">
+                            <label class="radio-inline">
+                                <input type="radio" name="newsletter" value="1"> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="newsletter" value="0" checked="checked"> No
+                            </label>
+                        </div>
+                    </div>
+                </fieldset-->
+                <div class="buttons botton_sub">
+                    <div class="pull-right">I have read and agree
+                        <input class="box-checkbox" type="checkbox" name="agree" value="1"> &nbsp;
+                        <input type="submit" [disabled] = "!accountInfo.valid" value="Submit" class="btn btn-submit" /> &nbsp;&nbsp;
+                        <!--a routerLink="/reg-address" class="other_details">Next >></a-->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

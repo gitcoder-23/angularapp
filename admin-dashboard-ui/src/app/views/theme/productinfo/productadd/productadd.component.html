@@ -1,0 +1,161 @@
+<!--------First Div-->
+<form [formGroup]="productInfoForm" (ngSubmit)="productInfo();">
+  <div class="basic_details">
+    <!---For_Edit Button-->
+    <!--div class="row">
+      <div class="col-sm-12">
+        <div class="form-groups">
+          <button type="submit" class="btn btn-sm btn-primary info_edit basic_label" name="editbutton"
+            id="editbutton" (click)="catShowHide()">
+            <i class="cui-pencil icons font-2xl mt-4"></i></button>
+
+        </div>
+      </div>
+    </div-->
+    <!---For_Edit Button-->
+    <!----ALWAYS NAME AND ID SAME AS POST MAN KEY {{product_code}}-->
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="name">Category Name<span class="star_class">*</span></label>
+          <select class="form-control" name="categoryName" id="categoryName" (change)="changeCategory($event)" 
+          formControlName="category_id" ng-model="category_id"
+          [ngClass]="{ 'is-invalid': submitted && pval.category_id.errors }">
+            <option value="">--Choose Category--</option>
+            <option *ngFor="let category of categories" [ngValue]="category.cat_id">
+              {{category.categoryName}}
+            </option>
+          </select>
+
+            <div *ngIf="submitted && pval.category_id.errors" class="invalid-feedback">
+            <div *ngIf="pval.category_id.errors.required">
+              <div class="error_msg">Choose category </div>
+            </div>
+            </div>
+
+
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="name">Product Code</label>
+          <input class="form-control" id="product_code" name="product_code"  type="text"
+          formControlName='product_code' [(ngModel)]='product_code' placeholder="Product code">
+        </div>
+      </div>
+
+
+      <div class="col-sm-3">
+        <div class="form-group" >
+          <label for="ccnumber">Product Name<span class="star_class">*</span></label>
+
+          <input class="form-control"  type="text" id="product_name" name="product_name" 
+          formControlName="product_name"
+          placeholder="Product name"  [(ngModel)]="product_name"
+          [ngClass]="{ 'is-invalid': submitted && pval.product_name.errors }"/>
+
+            <div *ngIf="submitted && pval.product_name.errors" class="invalid-feedback">
+            <div *ngIf="pval.product_name.errors.required">
+              <div class="error_msg"> Product Name is required</div>
+            </div>
+              
+            </div>
+
+
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="form-group" >
+          <label for="name">Brand Name<span class="star_class">*</span></label>
+          <!----Validation Start-->
+          <input class="form-control"  type="text" id="product_brand_name" name="product_brand_name" 
+          formControlName="product_brand_name"
+          placeholder="Enter brand name" [(ngModel)]="product_brand_name"
+          [ngClass]="{ 'is-invalid': submitted && pval.product_brand_name.errors }"/>
+
+            <div *ngIf="submitted && pval.product_brand_name.errors" class="invalid-feedback">
+            <div *ngIf="pval.product_brand_name.errors.required">
+              <div class="error_msg"> Product Name is required</div>
+            </div>
+              
+            </div>
+
+          <!----Validation End-->
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group" >
+          <label for="ccnumber">Product Description<span class="star_class">*</span></label>
+
+          
+          <angular-editor id="product_details" name="product_details"
+            formControlName="product_details" [placeholder]="'Enter description here...'"
+            [(ngModel)]="product_details" 
+            [ngClass]="{ 'is-invalid': submitted && pval.product_details.errors }">
+          </angular-editor>
+          
+          <div *ngIf="submitted && pval.product_details.errors" class="invalid-feedback">
+            <div *ngIf="pval.product_details.errors.required">
+              <div class="error_msg"> Description is required(Max 400 - Min 4)</div>
+            </div>
+
+            <div *ngIf="pval.product_details.errors.minLength">
+              <div class="error_msg">Text length(Min 4)</div>
+            </div>
+              
+            </div>
+
+         
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row">
+      
+      <div class="form-group col-sm-3 " >
+        <label for="city">Product Image<span class="star_class">*</span></label>
+
+
+        
+        <input type="file" class="form-control" name="product_img" id="product_img" 
+        [(ngModel)]="product_img" formControlName="product_img"
+          [ngClass]="{ 'is-invalid': submitted && pval.product_img.errors }"
+          (change)="preview(file.files)" #file accept="image/*" />
+
+          <div *ngIf="submitted && pval.product_img.errors" class="invalid-feedback">
+            <div *ngIf="pval.product_img.errors.required">
+              <div class="error_msg"> product image is required</div>
+            </div>
+            </div>
+
+      </div>
+      <div class="form-group col-sm-5 ">
+        <img class="img-avatar fox" *ngIf="imgURL" [src]="imgURL" width="100" height="100" />
+      </div>
+      
+    </div>
+    
+    <div class="row button_row">
+      <div class="card-footer1 buttons">
+        <button type="submit"  class="btn btn-sm btn-success"><i
+            class="fa fa-dot-circle-o"></i> Submit</button>
+      </div>
+    </div>
+
+
+  </div>
+</form>
+<!------Basic Details Div1 End-->

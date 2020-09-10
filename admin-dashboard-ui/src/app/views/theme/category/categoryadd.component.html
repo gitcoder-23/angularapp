@@ -1,0 +1,136 @@
+<div class="animated fadeIn upper_space">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Category Details</strong>
+
+
+        </div>
+
+        <form id="categoryDetails" name="categoryDetails" [formGroup]="categoryDetailsForm"
+          (ngSubmit)="categoryDetailsVal()">
+
+          <div class="card-body">
+           
+
+            <div class="basic_details">
+
+              <div class="row">
+
+
+                <div class="col-sm-6">
+                  <div class="form-group">{{categoryName}}
+                    <label for="name">Category Name<span class="star_class">*</span></label>
+
+
+                    <input class="form-control" type="text" id="cat_name" name="cat_name"
+                      formControlName="categoryName" placeholder="Enter category name"
+                      [(ngModel)]="cat_name" 
+                      [ngClass]="{ 'is-invalid': submitted && catVal.categoryName.errors }" />
+
+                    <div *ngIf="submitted && catVal.categoryName.errors" class="invalid-feedback">
+                      <div *ngIf="catVal.categoryName.errors.required">
+                        <div class="error_msg"> Category name is required</div>
+                      </div>
+
+                    </div>
+
+
+                  </div>
+                </div>
+
+
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="ccnumber">SEO Url(Optional)</label>
+                    <input type="text" id="cat_meta" name="cat_meta" [(ngModel)]="cat_meta"
+                      class="form-control" placeholder="Enter seo url" formControlName="seoURL">
+
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="ccnumber">Category Description<span class="star_class">*</span></label>
+
+                    <angular-editor id="cat_detailse" name="cat_detailse" formControlName="categoryDescription"
+                      [placeholder]="'Enter description here...'" [(ngModel)]="cat_detailse"
+                      [ngClass]="{ 'is-invalid': submitted && catVal.categoryDescription.errors }">
+                    </angular-editor>
+
+                    <div *ngIf="submitted && catVal.categoryDescription.errors" class="invalid-feedback">
+                      <div *ngIf="catVal.categoryDescription.errors.required">
+                        <div class="error_msg"> Description is required(Max 400 - Min 4)</div>
+                      </div>
+
+                      <div *ngIf="catVal.categoryDescription.errors.minLength">
+                        <div class="error_msg">Text length(Min 4)</div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+
+
+                <div class="form-group col-sm-3 ">
+                  <label for="city">Category Image<span class="star_class">*</span></label>
+
+                  <input type="file" class="form-control" name="cat_img_loc" id="cat_img_loc"
+                    [(ngModel)]="local_cat_img_loc" formControlName="categoryImg"
+                    [ngClass]="{ 'is-invalid': submitted && catVal.categoryImg.errors }" (change)="preview(file.files)"
+                    #file accept="image/*" />
+
+                  <div *ngIf="submitted && catVal.categoryImg.errors" class="invalid-feedback">
+                    <div *ngIf="catVal.categoryImg.errors.required">
+                      <div class="error_msg"> Category image is required</div>
+                    </div>
+                  </div>
+
+
+
+
+
+                </div>
+                <div class="form-group col-sm-3">
+
+
+                  <img class="img-avatar fox" *ngIf="imgURL" [src]="imgURL" width="100" height="100" />
+                </div>
+
+
+              </div>
+
+            </div>
+            <!------Basic Details Div-->
+
+
+
+          </div>
+
+
+          <div class="card-footer buttons">
+            <button type="submit"  class="btn btn-sm btn-success"
+            ><i class="fa fa-dot-circle-o"></i> Submit</button>
+            <!--button type="reset" class="btn btn-sm btn-danger" [disabled]="!categoryDetails.valid"><i
+                class="fa fa-ban"></i> Reset</button-->
+          </div>
+
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

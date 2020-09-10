@@ -1,0 +1,236 @@
+<ngx-spinner></ngx-spinner>
+
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <!--form name="registerForm" autocomplete="off" name="registerForm" (ngSubmit)="registerForm.valid && onSubmit()"-->
+              <form name="registerForm" autocomplete="off" name="registerForm" (ngSubmit)="registerForm.valid">
+                <h1>Register</h1>
+                <p class="text-muted">Create your account</p>
+                <!--span class="text-danger">{{error}}</span-->
+                <div class="input-group mb-3" [formGroup]="registerForm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+
+                  <!----Validation Start-->
+                  <input type="text" placeholder="First name*" autocomplete="fname" class="form-control" id="f_name"
+                    [(ngModel)]="f_name" formControlName="firstName" appProtectedfield
+                    [ngClass]="{'is-invalid': registerForm.get('firstName').touched && registerForm.get('firstName').invalid}" />
+
+                  <div class="invalid-feedback">
+                    <div class="error_msg">First name is required</div>
+                  </div>
+                  <!----Validation End-->
+
+
+                </div>
+                <div class="input-group mb-3" [formGroup]="registerForm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+
+                  <!----Validation Start-->
+                  <input type="text" placeholder="Last name*" autocomplete="lname" class="form-control" id="l_name"
+                    [(ngModel)]="l_name" formControlName="lastName" appProtectedfield
+                    [ngClass]="{'is-invalid': registerForm.get('lastName').touched && registerForm.get('lastName').invalid}" />
+
+                  <div class="invalid-feedback">
+                    <div class="error_msg">Last name is required</div>
+                  </div>
+                  <!----Validation End-->
+
+                </div>
+
+                <div class="input-group mb-3" [formGroup]="registerForm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-envelope"></i></span>
+                  </div>
+
+                  <!----Validation Start-->
+                  <input type="text" placeholder="Email(Optional)" autocomplete="email" appProtectedfield
+                    class="form-control" id="email" [(ngModel)]="email" formControlName="Email"
+                    addUniqueValidatorDirective
+                    [ngClass]="{'is-invalid': registerForm.get('Email').touched && registerForm.get('Email').invalid}" />
+
+                  <div *ngIf="registerForm.get('Email').touched && registerForm.get('Email').invalid"
+                    class="invalid-feedback">
+                    <!--div *ngIf="registerForm.get('Email').errors.required" class="error_msg">Email is required</div-->
+                    <div *ngIf="registerForm.get('Email').errors.pattern" class="error_msg">Type valid email address
+                    </div>
+                    <div *ngIf="registerForm.get('Email').errors.addUniqueValidatorDirective" class="error_msg">Email
+                      already exists use
+                      another one</div>
+                  </div>
+                  <!----Validation End-->
+
+                </div>
+
+
+
+
+                <div class="input-group mb-3" [formGroup]="registerForm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-phone"></i></span>
+                  </div>
+
+                  <!--------------Validation Start-->
+
+                  <input type="text" autocomplete="phone" appProtectedfield placeholder="Phone*" class="form-control"
+                    id="phone" [(ngModel)]="phone" formControlName="phone" addUniquePhoneValidatorDirective
+                    maxlength="10" minlength="10"
+                    [ngClass]="{'is-invalid': registerForm.get('phone').touched && registerForm.get('phone').invalid}" />
+
+                  <div *ngIf="registerForm.get('phone').touched && registerForm.get('phone').invalid"
+                    class="invalid-feedback">
+
+
+                    <div *ngIf="registerForm.get('phone').errors.required" class="error_msg">Phone is required</div>
+
+                    <div *ngIf="registerForm.get('phone').errors.addUniquePhoneValidatorDirective" class="error_msg">
+                      Phone
+                      already exists use
+                      another one</div>
+                    <div *ngIf="registerForm.get('phone').errors.pattern" class="error_msg">Type valid phone number 10
+                      charecters</div>
+                    <!--div *ngIf="registerForm.get('phone').errors.uniqueValidator" class="error_msg">Phone number already exists use another one</div-->
+
+
+                  </div>
+
+
+
+                  <!--------------Validation End-->
+
+                </div>
+                <div class="input-group mb-3" [formGroup]="registerForm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-symbol-male"></i></span>
+                  </div>
+                  <!--input type="text" class="form-control" [(ngModel)]="gender" name="gender" placeholder="gender" required-->
+
+                  <select id="gender" class="form-control" id="gender" ng-Model="gender" formControlName="genderControl"
+                    (change)="changeGender($event)">
+                    <option value=""> ---Select Gender---</option>
+                    <option [ngValue]="gender" *ngFor="let gender of genders"> {{gender}}</option>
+                  </select>
+                  <div class="invalid-feedback1">
+                    <div
+                      *ngIf="registerForm.get('genderControl').hasError('required') && registerForm.get('genderControl').touched"
+                      class='error_msg' padding>Gender is a required</div>
+                  </div>
+
+                </div>
+
+
+                <div class="input-group mb-3" [formGroup]="registerForm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                  </div>
+
+                  <!--input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Password" autocomplete="new-password" required-->
+
+
+                  <!--------------Validation Start-->
+
+                  <input [type]="fieldTextType ? 'text' : 'password'" placeholder="Password*"
+                    autocomplete="current-password" class="form-control" id="password" [(ngModel)]="password"
+                    formControlName="password" appProtectedfield maxlength="10" minlength="10"
+                    [ngClass]="{'is-invalid': registerForm.get('password').touched && registerForm.get('password').invalid}" />
+                  <!---------------Password Show Hide-->
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="fa" [ngClass]="{
+                            'fa-eye-slash': !fieldTextType,
+                            'fa-eye': fieldTextType
+                          }" (click)="toggleFieldTextType()"></i>
+                    </span>
+                  </div>
+                  <!---------------Password Show Hide end-->
+
+
+                  <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid"
+                    class="invalid-feedback">
+
+                    <div *ngIf="registerForm.get('password').errors.required" class="error_msg">Password is required at
+                      least 8 characters</div>
+                    <div *ngIf="registerForm.get('password').errors.pattern" class="error_msg">First is upper case</div>
+                    <div *ngIf="registerForm.get('password').errors.pattern" class="error_msg">Next is number &
+                      character(1, 2, @)</div>
+                    <div *ngIf="registerForm.get('password').errors.pattern" class="error_msg">(eg. Local2@code)</div>
+
+                  </div>
+                  <!--------------Validation End-->
+
+                </div>
+
+                <div class="input-group mb-4" [formGroup]="registerForm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                  </div>
+                  <!--input type="password" class="form-control" placeholder="Confirm password*" autocomplete="new-password" required-->
+
+                  <!--------------Validation Start-->
+
+                  <input [type]="repeatFieldTextType ? 'text' : 'password'" placeholder="Confirm password*"
+                    autocomplete="current-password" class="form-control" id="confirm_password" name="confirm_password"
+                    appProtectedfield appConfirmEqualValidatorDirective="password" [(ngModel)]="confirm_password"
+                    formControlName="confirmPassword" maxlength="10" minlength="10"
+                    [ngClass]="{'is-invalid': registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').invalid}" />
+                  <!---------------Password Show Hide-->
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i class="fa" [ngClass]="{
+                          'fa-eye-slash': !repeatFieldTextType,
+                          'fa-eye': repeatFieldTextType
+                        }" (click)="toggleRepeatFieldTextType()"></i>
+                    </span>
+                  </div>
+                  <!---------------Password Show Hide end-->
+
+                  <div
+                    *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').invalid"
+                    class="invalid-feedback">
+
+                    <div *ngIf="registerForm.get('confirmPassword').errors.required" class="error_msg">Confirm Password
+                      is required </div>
+                    <div *ngIf="registerForm.get('confirmPassword').errors.pattern" class="error_msg">Confirm Password
+                      should be same as password pattern</div>
+                    <div *ngIf="registerForm.get('confirmPassword').errors.notEqual" class="error_msg">Password &
+                      Confirm Password does not match</div>
+                  </div>
+
+
+
+                  <!--------------Validation End-->
+
+                </div>
+                <button type="button" (click)="createObject()" class="btn btn-block btn-success"
+                  >Create Account</button>
+                <!--button type="button" (click)="createObject()" class="btn btn-block btn-success"
+                  [disabled]="!registerForm.valid">Create Account</button-->
+              </form>
+
+              <!-----------Bottom Portion-->
+              <p>Already have an account? Please <a routerLink="/login">Login</a></p>
+            </div>
+            <div class="card-footer p-4">
+              <div class="row">
+                <div class="col-6">
+                  <button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

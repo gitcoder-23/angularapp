@@ -1,0 +1,86 @@
+[
+    {
+        "main_menu":"User",
+        "link":"/user",
+        "sub_Menus":[{
+            "sub_name":"Get User",
+            "link":"/getusre",
+            "api_Endpoint":"",
+            "method":"GET",
+            "response_status":"201",
+            "response_data":{}
+        }]
+    },
+   {
+        "main_menu":"Address",
+        "link":"/user",
+        "sub_Menus":[{
+            "sub_name":"Get User",
+            "link":"/getusre",
+            "api_Endpoint":"",
+            "method":"GET",
+            "response_status":"201",
+            "response_data":{}
+        }]
+    },
+    {
+        "main_menu":"product",
+        "link":"/user",
+        "sub_Menus":[{
+            "sub_name":"Get User",
+            "link":"/getusre",
+            "api_Endpoint":"",
+            "method":"GET",
+            "response_status":"201",
+            "response_data":{}
+        }]
+    },
+    {
+        "main_menu":"Cart",
+        "link":"/user",
+        "sub_Menus":[{
+            "sub_name":"Get User",
+            "link":"/getusre",
+            "api_Endpoint":"",
+            "method":"GET",
+            "response_status":"201",
+            "response_data":{}
+        }]
+    },
+    {
+        "main_menu":"Order",
+        "link":"/user",
+        "sub_Menus":[{
+            "sub_name":"Get User",
+            "link":"/getusre",
+            "api_Endpoint":"",
+            "method":"GET",
+            "response_status":"201",
+            "response_data":{}
+        }]
+    },
+    {
+        "main_menu":"Shiping",
+        "link":"/user",
+        "sub_Menus":[{
+            "sub_name":"Get User",
+            "link":"/getusre",
+            "api_Endpoint":"",
+            "method":"GET",
+            "response_status":"201",
+            "response_data":{}
+        }]
+    },
+    {
+        "main_menu":"Site Specific",
+        "link":"/user",
+        "sub_Menus":[{
+            "sub_name":"Get User",
+            "link":"/getusre",
+            "api_Endpoint":"",
+            "method":"GET",
+            "response_status":"201",
+            "response_data":{}
+        }]
+    }
+]

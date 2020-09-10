@@ -1,0 +1,507 @@
+
+
+
+
+// If you want to override variables do it here
+@import "variables";
+
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+// If you want to add something do it here
+@import "custom";
+
+
+img.navbar-brand-full {
+    width: 90%;
+    height: 60%;
+}
+
+
+app-header.app-header.navbar button.navbar-toggler.d-none.d-lg-block span.navbar-toggler-icon {
+    display: none;
+}
+
+
+.basic_details {
+    border: 1px solid #000;
+    padding: 40px 30px;  
+    box-shadow: 5px 5px 0px 0px #3690a9/*0px 2px 10px 0px rgb(99, 142, 154)*/;
+
+    border-radius: 0.25rem;
+    margin-bottom: 25px;
+}
+
+.basic_details label {
+    color: #000;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+h2.local_class1 {
+    margin-bottom: 25px;
+    font-size: 23px;
+}
+
+.form-control {
+    border: 1px solid #737980;
+}
+
+.form-group.col-sm-3.image_tag img {
+    border: 1px solid #000;
+    box-shadow: 0px 2px 10px 0px rgb(76, 49, 9);
+    width: 40%;
+}
+
+.form-group.col-sm-2.image_tag img {
+    border: 1px solid #000;
+    box-shadow: 0px 2px 10px 0px #4c3109;
+    width: 30%;
+}
+
+/* .form-group.image_tag {
+   margin-top: 20px;
+} */
+
+.buttons button.btn.btn-sm {
+    padding: 8px 18px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: inherit;
+}
+
+.basic_details input, .basic_details select {
+    font-size: 12px;
+    color: #000 !important;
+    font-family: sans-serif;
+}
+
+.scrolling_div {
+    overflow-x: scroll;
+    overflow-y: scroll;
+    box-shadow: 0px 2px 8px 0px rgb(0, 40, 88);
+    border-top: 1px solid rgb(0, 40, 88);
+    margin-bottom: 16px;
+}
+
+button.btn.btn-sm.btn-primary.edit1, button.btn.btn-sm.btn-primary.edit {
+    background: #3ac574;
+    border-color: #3ac574;
+}
+
+
+
+
+ol.breadcrumb {
+    display: none;
+}
+
+span.badge.badge-info {
+    display: none;
+}
+
+.error_msg {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: unset;
+    color: #d41515;
+}
+
+
+.display_image {
+    border: 1px solid #20a8d8;
+    padding: 10px 10px;
+}
+
+.display_image img {
+    padding: 0 0px 0 6px;
+}
+
+
+.banner_images label {
+    color: #000;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.upper_space {
+    margin-top: 30px;
+}
+
+
+
+.angular-editor-textarea {
+    min-height: 150px !important;
+}
+
+.fox {
+    width: 90px;
+    height: 80px;
+    border: 0px solid;
+    border-radius: 5px;
+    /*padding: 17px 5px;*/
+}
+
+.input-group-append span.input-group-text {
+    border: 1.2px solid #737980; 
+}
+
+.input-group-append span.input-group-text i.fa.fa-eye {
+    font-size: 20px; cursor: pointer;
+}
+.input-group-append span.input-group-text i.fa.fa-eye-slash {
+    font-size: 20px; cursor: pointer;
+}
+
+.next_button {
+    margin-top: 34px;
+}
+
+
+
+.card-body div#notification-alert {
+    margin-top: 6px;
+}
+
+
+
+.invalid-feedback1 {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #f86c6b;
+}
+
+.info_edit {
+    float: right;
+}
+
+
+button.btn.btn-sm.btn-primary.button_edit {
+    color: #fff;
+    background-color: #14a14f;
+    border-color: #3ac574;
+    padding: 6px 11px;
+    font-size: 15px;
+
+}
+button.btn.btn-sm.btn-primary.button_edit:hover {
+    color: #fff;
+    background-color: #05692f;
+    border-color: #05692f;
+}
+button.btn.btn-sm.btn-primary.button_edit:disabled:hover {
+    background-color: #14a14f;
+    border-color: #14a14f;
+}
+
+.form-groups button.btn.btn-sm.btn-primary.info_edit {
+    border-radius: 22px;
+    padding: 6px 8px;
+}
+.form-groups button.btn.btn-sm.btn-primary.info_edit:hover {
+    background: #07536d;
+}
+
+/* Show-Hide Button click style start */
+.basic_btn, .button_div{
+
+    display: none;
+} 
+
+
+
+.address_btn, .button_div{
+
+    display: none;
+}
+
+.image_edit, .button_div{
+
+    display: none;
+}
+
+.form-group label.basic_label {
+    background-color: #c6ccd2;
+    color: #423838;
+}
+
+
+
+
+.form-group label.address_label {
+    background-color: #c6ccd2;
+    color: #423838;
+}
+
+
+
+.form-group label.image_label {
+    background-color: #c6ccd2;
+    color: #423838;
+}
+
+/* Show-Hide Button click style end */
+
+
+.basic_details.shopper_details {
+    border: 1px solid #000;
+    padding: 18px 30px 40px;
+    box-shadow: 5px 5px 0px 0px #3690a9;
+    border-radius: 0.25rem;
+    margin-bottom: 25px;
+}
+
+
+.button_edit {
+    margin-top: 35px;
+}
+
+
+@media (max-width: 1604px){
+    
+    .responsive_register {
+        display: none !important;
+    }
+}
+
+@media (max-width: 760px){
+    
+    .responsive_reg {
+        margin-top: 10px !important;
+    }
+
+    .responsive_register {
+        margin-top: 20px !important;
+    }
+}
+
+@media (max-width: 991.98px){
+    
+    .responsive_register {
+        display: block !important;
+    }
+
+    
+
+    .responsive_register {
+        margin-top: 20px !important;
+    }
+}
+
+span.responsive_text {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.btn-link {
+    font-weight: 500;
+    
+}
+
+
+span.star_class {
+    color: #c00d0c;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+
+.card-footer1 {
+    padding: 0 14px;
+}
+
+.button_row {
+    margin-top: 40px;
+}
+
+.btn-success {
+    
+    background-color: #148e3e;
+    border-color: #148e3e;
+}
+
+.admin_reset_pass input {
+    height: 36px;
+}
+
+.field_size_apple input {
+    height: 34px;
+}
+
+.modal-backdrop.fade.show {
+    z-index: 9;
+}
+
+div#notifyModal .modal-dialog {
+    transform: translate(0, 50px);
+}
+div#locationModal .modal-dialog {
+    transform: translate(0, 50px);
+}
+
+div#notifyModal .modal-body {
+    overflow-y: scroll;
+    height: 250px;
+}
+
+p.notifypara {
+    border: 1px solid #14a3ce;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+div#locationModal .modal-body {
+    background: #deebf1;
+}
+.List_inner {
+    margin-bottom: 14px;
+}
+
+span.pro_para {
+    color: #fff0f0;
+    font-size: 16px;
+    font-weight: 500;
+    background: #2b9989;
+    padding: 4px 12px;
+}
+
+.input-group-prepend span.input-group-text {
+    background: #49b1d6;
+    border-top: 1px solid #49b1d6;
+    border-bottom: 1px solid #49b1d6;
+    box-shadow: 2px 4px 8px 0px #49b1d6;
+}
+
+.input-group-prepend span.input-group-text i.icon-magnifier {
+    color: #fff;
+}
+
+.login_enter .input-group-prepend span.input-group-text i {
+    color: #fff;
+}
+
+.badge {
+    padding: 10px 10px;
+    border-radius: 30px; border: none;
+}
+
+
+.badge-primary {
+   
+    background-color: #dc970a;
+    
+}
+
+
+.badge-primary:hover {
+    background-color: #b16e08 !important;
+}
+
+
+ul.nav.navbar-nav.ml-auto span.badge.badge-pill.badge-danger {
+    padding: 3px 5px 3px 5px;
+    border-radius: 30px;
+}
+
+.dropdown-menu.dropdown-menu-right.show span.badge.badge-danger {
+    padding: 5px 5px 5px 5px;
+    border-radius: 30px;
+}
+
+
+
+button:focus {
+    
+    outline: none;
+}
+
+.popover {
+    box-shadow: 0px 0px 8px 0px #148e3e;
+}
+
+.popover h3.popover-title {
+    background: #49b1d6;
+    color: #fff;
+}
+
+.popover .popover-content p {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.popover .popover-content button.btn.btn-block.btn-outline-secondary {
+    border: none;
+    background: #be1111;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
